@@ -27,11 +27,11 @@ def main():
     text = input()
     parents=[]
     n=0
-    if text=="I":
+    if text[0]=="I":
         n=int(input())
         arr=input()
         parents=[int(x) for x in arr.split()]
-    elif text=="F":
+    elif text[0]=="F":
         filename = input()
         if filename[-1] == 'a':
             return
