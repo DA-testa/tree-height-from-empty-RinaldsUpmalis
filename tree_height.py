@@ -32,7 +32,8 @@ def main():
     text = input()
     parents=[]
     n=0
-    if text=="I":
+    if text[0]=="I":
+        print(text)
         n=int(input())
         arr=input()
         parents=[int(x) for x in arr.split()]
