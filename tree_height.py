@@ -5,7 +5,6 @@ import threading
 import numpy
 
 def compute_height(n, parents):
-    # Write this function
     max_height = 0
     height_mas = numpy.zeros(n, dtype=int)
     children = {i: [] for i in range(n)}
@@ -44,10 +43,7 @@ def main():
 
     print(compute_height(n, parents)) 
 
-    # pass
-
 sys.setrecursionlimit(10**7)
 threading.stack_size(2**27)
 threading.Thread(target=main).start()
-main()
 # print(numpy.array([1,2,3]))
