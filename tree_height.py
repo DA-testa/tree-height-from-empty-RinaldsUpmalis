@@ -32,7 +32,7 @@ def main():
     text = input()
     parents=[]
     n=0
-    if text[0]=="I":
+    if text=="I":
         n=int(input())
         arr=input()
         parents=[int(x) for x in arr.split()]
@@ -47,6 +47,10 @@ def main():
             parents = [int(x) for x in lines[1].split()]
     #n = 4
     #parents = [-1, 0, 0, 1]
+    sys.setrecursionlimit(10**7)  # max depth of recursion
+    threading.stack_size(2**27)   # new thread will get stack of such size
+    threading.Thread(target=main).start()
+
     print(compute_height(n, parents)) 
 
     # let user input file name to use, don't allow file names with letter a
@@ -60,8 +64,8 @@ def main():
 # In Python, the default limit on recursion depth is rather low,
 # so raise it here for this problem. Note that to take advantage
 # of bigger stack, we have to launch the computation in a new thread.
-sys.setrecursionlimit(10**7)  # max depth of recursion
-threading.stack_size(2**27)   # new thread will get stack of such size
-threading.Thread(target=main).start()
+# sys.setrecursionlimit(10**7)  # max depth of recursion
+# threading.stack_size(2**27)   # new thread will get stack of such size
+# threading.Thread(target=main).start()
 # main()
 # print(numpy.array([1,2,3]))
