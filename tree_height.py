@@ -5,16 +5,15 @@ import threading
 import numpy
 
 def compute_height(n, parents):
-    max_height = 0
     height_mas = numpy.zeros(n, dtype=int)
     children = {i: [] for i in range(n)}
     for i in range(n):
         parent = parents[i]
         if parent == -1:
             height_mas[i] = 1
+            queue = [i]
         else:
             children[parent].append(i)
-    queue = [i for i in range(n) if parents[i] == -1]
     while queue:
         current = queue.pop(0)
         for child in children[current]:
@@ -47,4 +46,3 @@ def main():
 sys.setrecursionlimit(10**7)
 threading.stack_size(2**27)
 threading.Thread(target=main).start()
-# print(numpy.array([1,2,3]))
