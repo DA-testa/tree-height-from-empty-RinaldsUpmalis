@@ -32,15 +32,15 @@ def main():
     text = input()
     n=0
     if text[0]=="I":
-        n=int(input())
-        arr=input()
+        n=int(input().strip())
+        arr=input().strip()
         parents=[int(x) for x in arr.split()]
     elif text[0]=="F":
-        filename = input()
+        filename = input().strip()
         if filename[-1] == 'a':
             return
         with open(filename, 'r') as file:
-            text = file.read()
+            text = file.read().strip()
             lines = text.split('\n')
             n = int(lines[0])
             parents = [int(x) for x in lines[1].split()]
