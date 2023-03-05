@@ -4,17 +4,52 @@ import sys
 import threading
 import numpy
 
-
 def compute_height(n, parents):
     # Write this function
     max_height = 0
+    height_mas = numpy.zeros(n, dtype=int)
+    children = {i: [] for i in range(n)}
+    for i in range(n):
+        parent = parents[i]
+        if parent == -1:
+            height_mas[i] = 1
+        else:
+            children[parent].append(i)
+    queue = [i for i in range(n) if parents[i] == -1]
+    while queue:
+        current = queue.pop(0)
+        for child in children[current]:
+            # Set the depth of the child to the depth of the current node + 1
+            height_mas[child] = height_mas[current] + 1
+            # Add the child to the queue for processing
+            queue.append(child)
+
+    # The height of the tree is the maximum depth of any node
+    return numpy.max(height_mas)
     # Your code here
-    return max_height
+    # return max_height
 
 
 def main():
     # implement input form keyboard and from files
-    
+    text = input()
+    if text=="I":
+        n=int(input())
+        arr=input()
+        parents=[int(x) for x in arr.split()]
+    elif text=="F":
+        filename = input()
+        if filename[-1] == 'a':
+            return
+        with open(filename, 'r') as file:
+            text = file.read()
+            lines = text.split('\n')
+            n = int(lines[0])
+            parents = [int(x) for x in lines[1].split()]
+    #n = 4
+    #parents = [-1, 0, 0, 1]
+    print(compute_height(n, parents)) 
+
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
     
