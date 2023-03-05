@@ -19,12 +19,9 @@ def compute_height(n, parents):
     while queue:
         current = queue.pop(0)
         for child in children[current]:
-            # Set the depth of the child to the depth of the current node + 1
             height_mas[child] = height_mas[current] + 1
-            # Add the child to the queue for processing
             queue.append(child)
 
-    # The height of the tree is the maximum depth of any node
     return numpy.max(height_mas)
     # Your code here
     # return max_height
@@ -43,7 +40,7 @@ def main():
             return
         with open(filename, 'r') as file:
             text = file.read()
-            lines = text.split('\n')
+            lines = text.split('\r\n')
             n = int(lines[0])
             parents = [int(x) for x in lines[1].split()]
     #n = 4
