@@ -32,7 +32,8 @@ def main():
         arr=input()
         parents=[int(x) for x in arr.split()]
     elif text[0]=="F":
-        filename = input()
+        filename = "test/"
+        filename = filename + input()
         if filename[-1] == 'a':
             return
         with open(filename, 'r') as file:
