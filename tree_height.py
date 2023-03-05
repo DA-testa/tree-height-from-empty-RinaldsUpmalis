@@ -30,6 +30,7 @@ def compute_height(n, parents):
 def main():
     # implement input form keyboard and from files
     text = input()
+    parents=0
     n=0
     if text=="I":
         n=int(input())
